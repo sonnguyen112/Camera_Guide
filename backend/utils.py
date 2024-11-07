@@ -242,7 +242,7 @@ def predict_align_angle(img, reduce_size = True):
     lines = cv2.HoughLinesP(edges, 1, np.pi / 180,
                             100, minLineLength=100, maxLineGap=10)
     if lines is None:
-        return {"status": "success", "rotation_angle": 0, "image_shape": img_shape}
+        return 0,img
 
     left_angles = []
     right_angles = []

@@ -1,26 +1,16 @@
 import { Image, StyleSheet, View, Text, Pressable, ActivityIndicator } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { Stack } from 'expo-router';
-import { useCameraDevice, useCameraPermission, Camera, useFrameProcessor, useSkiaFrameProcessor, runAtTargetFps, PhotoFile } from 'react-native-vision-camera';
+import { useCameraDevice, useCameraPermission, Camera, useFrameProcessor, runAtTargetFps, PhotoFile } from 'react-native-vision-camera';
 import { useEffect } from 'react';
 import { useResizePlugin } from 'vision-camera-resize-plugin';
-import { PaintStyle, rotate, Skia } from '@shopify/react-native-skia';
-import { crop } from 'vision-camera-cropper';
 import { OpenCV } from 'react-native-fast-opencv';
-import { useSharedValue, Worklets } from 'react-native-worklets-core';
-import { runOnJS } from 'react-native-reanimated';
+import { Worklets } from 'react-native-worklets-core';
 import check_mark from '../../assets/images/check-mark.png'
 import right_rotate from '../../assets/images/rotate-left.png'
 import left_rotate from '../../assets/images/rotate-right.png'
-
-
 import { useState, useRef } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { PermissionsAndroid, Alert } from 'react-native';
+import {API_URL} from '@env'
 
 function GuideFrame({ predictRotation }: any) {
   const icon =
@@ -65,7 +55,7 @@ export default function HomeScreen() {
       "img_base64": img_base64
     }
     // Send the image to the backend
-    fetch('https://144998276bd6.ngrok.app/process-image', {
+    fetch(`${API_URL}/process-image`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -122,7 +112,7 @@ export default function HomeScreen() {
       const data = await result.blob();
       const img_base64 = await blobToBase64(data)
       // console.log(img_base64)
-      fetch('https://144998276bd6.ngrok.app/rotate-image', {
+      fetch(`${API_URL}/rotate-image`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

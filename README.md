@@ -56,9 +56,17 @@ This Android application helps users capture photos at the optimal angle by prov
    ```
    cd backend
    fastapi dev main.py 
+   ngrok http 8000
    ```
 
-2. **Start the React Native app**:
+2. **Start the app**:
+
+   Create .env file in the root directory of the project with the following content:
+
+   ```
+   API_URL=<your_ngrok_url>
+   ```
+   
    Navigate to root directory of the project and run the following command:
 
    ```
