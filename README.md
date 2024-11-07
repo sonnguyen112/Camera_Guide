@@ -42,7 +42,15 @@ This Android application helps users capture photos at the optimal angle by prov
    pip install -r requirements.txt
    ```
 
-### Running the Application
+### Task 1: Running the algorithm to test with image
+
+   ```
+   cd poc
+   ```
+
+   Run the file 'rotation_correction.ipynb' to test the algorithm.
+
+### Task 2: Running the Application
 
 1. **Start the backend**:
    ```
