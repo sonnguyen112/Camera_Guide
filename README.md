@@ -1,50 +1,58 @@
-# Welcome to your Expo app 👋
+# Optimal Photo Capture Android Application
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This Android application helps users capture photos at the optimal angle by providing real-time, on-screen guidance. Built using React Native, the app detects camera misalignment and automatically corrects the orientation if needed. The app leverages the **React Native Vision Camera** library for high-speed image streaming and integrates with a **FastAPI** backend powered by **OpenCV** for image processing. 
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Real-Time Angle Guidance**: Visual arrows prompt users to adjust the camera angle for optimal photo alignment.
+- **Automatic Image Correction**: If the user captures an image with an incorrect angle, the app automatically adjusts the orientation.
+- **Cross-Platform Compatibility**: Built with React Native, ensuring smooth performance on Android.
+- **Fast and Efficient Processing**: Uses FastAPI and OpenCV to process images quickly and return angle adjustments in real-time.
 
+## Technologies Used
+
+- **Frontend**: React Native, React Native Vision Camera
+- **Backend**: FastAPI, OpenCV (Python)
+- **Image Processing**: Base64 encoding for image transmission; edge and line detection to calculate alignment angle
+
+## Getting Started
+
+### Prerequisites
+
+- **Node.js** and **npm**: Required to run the React Native app.
+- **Python** and **FastAPI**: Required for backend image processing.
+- **OpenCV**: Used in the backend for detecting image angles and adjustments.
+
+### Installation
+
+1. **Clone the repository**:
    ```bash
+   git clone https://github.com/sonnguyen112/Camera_Guide.git
+   cd Camera_Guide
+   ```
+
+2. **Install frontend dependencies**:
+   ```
    npm install
    ```
 
-2. Start the app
-
-   ```bash
-    npx expo start
+3. **Install backend dependencies**:
+   ```
+   cd backend
+   pip install -r requirements.txt
    ```
 
-In the output, you'll find options to open the app in a
+### Running the Application
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1. **Start the backend**:
+   ```
+   cd backend
+   fastapi dev main.py 
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+2. **Start the React Native app**:
+   Navigate to root directory of the project and run the following command:
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   ```
+   npx expo run:android
+   ```
